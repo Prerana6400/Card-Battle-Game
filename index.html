@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Orbitron:wght@500&display=swap">
+  <title>Card Battle Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="side-bar left-bar"></div>
+  <div class="side-bar right-bar"></div>
+
+
+  <div id="welcome-screen">
+    <div class="banner">
+      <h1 class="game-title">⚔️ Card Battle Game ⚔️</h1>
+      <p class="tagline">Choose your game mode to begin the battle</p>
+    </div>
+
+    <div class="mode-container">
+      <div class="mode-card">
+        <!--<div class="mode-icon">🛡️</div>-->
+        <h2>1 Player</h2>
+        <p>Challenge the Computer</p>
+        <button onclick="startGame('single')">Play</button>
+      </div>
+      <div class="mode-card">
+       <!-- <div class="mode-icon">🛡️</div>-->
+        <h2>2 Players</h2>
+        <p>Battle with a Friend</p>
+        <button onclick="startGame('two')">Play</button>
+      </div>
+    </div>
+
+    <div class="rules-section">
+      <h2>Game Rules</h2>
+      <ul>
+        <li>Both players start with 100 Health Points.</li>
+      <li>Use Attack, Defense, or Special cards strategically.</li>
+      <li>Turns alternate — player who brings opponent’s HP to 0 wins.</li>
+      <li>Special cards have unique effects: Heal, Freeze, Double Attack!</li>
+    </ul>
+    </div>
+  </div>
+
+  <div id="game-container" style="display: none;">
+    <div class="game-header">
+      <div id="turn-indicator">Player 1's Turn</div>
+      <div class="health-section">
+        <div class="player">
+          <h2>Player 1</h2>
+          <div class="health-display">
+            <div class="health-bar-container">
+              <div id="player1-health" class="health-bar"></div>
+            </div>
+            <div id="player1-hp" class="hp-value">100/100</div>
+          </div>
+        </div>
+        <div class="vs-circle">VS</div>
+        <div class="player">
+          <h2>Player 2</h2>
+          <div class="health-display">
+            <div class="health-bar-container">
+              <div id="player2-health" class="health-bar"></div>
+            </div>
+            <div id="player2-hp" class="hp-value">100/100</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="player-hand" class="hand-container"></div>
+    <button id="next-turn-btn" style="display:none;">Next Turn</button>
+
+    <div id="log" class="battle-log"></div>
+
+    <div id="game-controls">
+      <button class="btn-restart" onclick="restartGame()">Restart Game</button>
+      <button class="btn-end" onclick="endGame()">End Game</button>
+    </div>
+  </div>
+
+  <div id="end-screen" style="display: none;">
+    <div class="end-content">
+      <h2 id="result-message"></h2>
+      <div class="confetti"></div>
+      <button onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+
+<audio id="cardFlipSound" src="audio/card-flip.mp3" preload="auto"></audio>
+<audio id="winSound" src="audio/win.mp3" preload="auto"></audio>
+<audio id="loseSound" src="audio/lose.mp3" preload="auto"></audio>
+
+ <!-- <audio id="card-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3"></audio>
+  <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-click-error-1110.mp3"></audio>-->
+
+  <script src="cards.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
